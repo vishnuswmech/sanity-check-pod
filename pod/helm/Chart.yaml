@@ -1,0 +1,6 @@
+apiVersion: v2
+name: sanity-checks-pod
+description: sanity-checks-pod
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

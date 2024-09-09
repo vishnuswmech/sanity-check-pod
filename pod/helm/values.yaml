@@ -1,0 +1,30 @@
+name: sanity-checks-pod
+imagePullSecrets: aws-registry # use false to ignore this
+
+namespaces:
+  application: default
+
+sanity_checks_pod:
+  service:
+    type: NodePort
+  image: 
+  tag: 
+  db_host: ""
+  db_port: "5432"
+  db_user: "postgres"
+  db_password: ""
+  db_name: "postgres"
+  log_level: "info"
+  csv_file_name_raw: "s3-rds.csv"
+  s3_bucket: "vishnu-test1234"
+  region: ""
+
+ingress:
+  enabled: false
+  hostname: "dummy"
+
+ingressAnnotations:
+    scheme: internal-facing
+    subnets: "dummy"
+    class: alb
+    acm: "dummy"

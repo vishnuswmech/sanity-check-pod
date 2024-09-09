@@ -1,0 +1,3 @@
+Hurray!!
+Great work!!
+Sanity checks pod was successfully deployed!!

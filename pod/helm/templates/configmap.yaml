@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sanity-checks-pod-configmap
+  namespace: {{ .Values.namespaces.application }}
+data:
+  log_level: {{ .Values.sanity_checks_pod.log_level | quote }}
+  region: {{ .Values.sanity_checks_pod.region | quote }}
+  s3_bucket: {{ .Values.sanity_checks_pod.s3_bucket | quote }}
+  csv_file_name_raw: {{ .Values.sanity_checks_pod.csv_file_name_raw | quote }}
+  db_name: {{ .Values.sanity_checks_pod.db_name | quote }}
+  db_port: {{ .Values.sanity_checks_pod.db_port | quote }}
+  db_user: {{ .Values.sanity_checks_pod.db_user | quote }}
+  db_host: {{ .Values.sanity_checks_pod.db_host | quote }}

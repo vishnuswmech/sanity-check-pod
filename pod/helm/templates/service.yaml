@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sanity-checks-pod
+  namespace: {{ .Values.namespaces.application }}
+  {{ if .Values.internal_load_balancer }}
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+  {{ end }}
+spec:
+  type: {{ .Values.sanity_checks_pod.service.type }}
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    name: sanity-checks-pod

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sanity-checks-pod
+  namespace: {{ .Values.namespaces.application }}
+  labels:
+    name: sanity-checks-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: sanity-checks-pod
+  template:
+    metadata:
+      labels:
+        name: sanity-checks-pod
+    spec:
+      containers:
+      - name: sanity-checks-pod
+        image: {{ .Values.sanity_checks_pod.image }}:{{ .Values.sanity_checks_pod.tag }}
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: sanity-checks-pod-configmap
+        - secretRef:
+            name: sanity-checks-pod-secret
+
